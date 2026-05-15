@@ -20,7 +20,7 @@ A minimal Lysa Engine project that:
 | CMake | 3.29+ |
 | Ninja (or another generator) | any recent |
 
-See the [Lysa build documentation](https://github.com/HenriMichelon/lysa) for
+See the [Lysa build documentation](https://henrimichelon.github.io/Lysa/) for
 platform-specific instructions.
 
 ---

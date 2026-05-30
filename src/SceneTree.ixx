@@ -16,7 +16,7 @@ export namespace mygame {
         virtual void onResize(const vireo::Extent& extent) {}
 
     protected:
-        Camera&       camera;
+        Camera& camera;
         SceneInstance root{"Root"};
 
         void addInstance(SceneInstance& instance);

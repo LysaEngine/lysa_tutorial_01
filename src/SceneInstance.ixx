@@ -4,7 +4,7 @@ import lysa;
 
 export namespace mygame {
 
-    // Base scene node ─────────────────────────────────────────────────────────
+    // Base scene node
     class SceneInstance {
     public:
         const SceneInstance* parent{nullptr};
@@ -15,18 +15,19 @@ export namespace mygame {
         bool dirty{true};
 
         SceneInstance(
-            const std::string&    name           = "",
-            const lysa::float4x4& localTransform = lysa::float4x4::identity())
-            : localTransform(localTransform), name(name) {
+            const std::string& name = "",
+            const lysa::float4x4& localTransform = lysa::float4x4::identity()) :
+            name(name),
+            localTransform(localTransform) {
             SceneInstance::update();
         }
 
-        SceneInstance(const SceneInstance& orig)
-            : localTransform(orig.localTransform),
-              globalTransform(orig.globalTransform),
-              name(orig.name) {}
+        SceneInstance(const SceneInstance& orig) :
+            globalTransform(orig.globalTransform),
+            name(orig.name),
+            localTransform(orig.localTransform) {}
 
-        void setVisible(bool isVisible) {
+        void setVisible(const bool isVisible) {
             visible = isVisible;
             for (const auto& child : children) child->setVisible(visible);
             dirty = true;
@@ -70,7 +71,8 @@ export namespace mygame {
         }
 
         const auto& getTransform() const { return localTransform; }
-        bool        haveParent()   const { return parent != nullptr; }
+
+        bool haveParent() const { return parent != nullptr; }
 
         virtual ~SceneInstance() = default;
 
@@ -78,22 +80,22 @@ export namespace mygame {
         lysa::float4x4 localTransform;
     };
 
-    // Renderable scene node ───────────────────────────────────────────────────
+    // Renderable scene node
     struct SceneMeshInstance : SceneInstance {
         lysa::MeshInstance meshInstance;
 
         SceneMeshInstance(
-            const lysa::Mesh&     mesh,
-            const std::string&    name,
-            const lysa::float4x4& localTransform = lysa::float4x4::identity())
-            : SceneInstance(name, localTransform),
-              meshInstance(mesh, name) {
+            const lysa::Mesh& mesh,
+            const std::string& name,
+            const lysa::float4x4& localTransform = lysa::float4x4::identity()) :
+            SceneInstance(name, localTransform),
+            meshInstance(mesh, name) {
             SceneMeshInstance::update();
         }
 
-        SceneMeshInstance(const SceneMeshInstance& orig)
-            : SceneInstance(orig.name, orig.localTransform),
-              meshInstance(orig.meshInstance) {
+        SceneMeshInstance(const SceneMeshInstance& orig):
+            SceneInstance(orig.name, orig.localTransform),
+            meshInstance(orig.meshInstance) {
             SceneMeshInstance::update();
         }
 

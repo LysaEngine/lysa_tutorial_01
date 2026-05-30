@@ -4,8 +4,8 @@ import engine.scene_instance;
 
 namespace mygame {
 
-    RotatingAssetScene::RotatingAssetScene(Camera& camera)
-        : SceneTree(camera) {
+    RotatingAssetScene::RotatingAssetScene(Camera& camera):
+        SceneTree(camera) {
 
         // Ambient light keeps unlit faces from going pitch-black.
         setEnvironment({lysa::float3{1.0f, 1.0f, 1.0f}, 0.20f});
@@ -19,7 +19,7 @@ namespace mygame {
         // Step back a few units so the asset is fully visible on startup.
         camera.setTransform(lysa::float4x4::translation(0.0f, 0.0f, 4.0f));
 
-        // Lights ────────────────────────────────────────────────────────────────
+        // Lights
         directionalLight.castShadows = true;
         directionalLight.shadowMapSize = 2048;
         directionalLight.shadowMapCascadesCount = 3;

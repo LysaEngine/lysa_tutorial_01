@@ -4,8 +4,9 @@ namespace mygame {
 
     lysa::SceneConfiguration sceneConfiguration{};
 
-    SceneTree::SceneTree(Camera& camera)
-        : Scene(sceneConfiguration), camera(camera) {}
+    SceneTree::SceneTree(Camera& camera):
+        Scene(sceneConfiguration),
+        camera(camera) {}
 
     void SceneTree::addInstance(SceneInstance& instance) {
         if (auto* mi = dynamic_cast<SceneMeshInstance*>(&instance)) {

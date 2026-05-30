@@ -9,7 +9,6 @@ using namespace mygame;
 
 // Global engine configuration
 lysa::ContextConfiguration contextConfiguration {
-    .displayFPS = true,
     .loggingConfiguration {
         .loggingMode = lysa::LOGGING_MODE_STDOUT,
         .logLevelMin = lysa::LogLevel::INFO,

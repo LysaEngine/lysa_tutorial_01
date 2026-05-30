@@ -3,12 +3,12 @@ module engine.camera;
 namespace mygame {
 
     Camera::Camera( const lysa::RenderingWindow& window):
+        window(window),
+        attachment(std::make_shared<SceneInstance>("Camera attachment", lysa::float4x4::identity())),
+        pivot(std::make_shared<SceneInstance>("Camera pivot", lysa::float4x4::identity())),
         camera(lysa::float4x4::identity(),
                lysa::perspective(fov, window.getRenderTarget().getAspectRatio(), near, far),
-               near, far),
-        pivot(std::make_shared<SceneInstance>("Camera pivot", lysa::float4x4::identity())),
-        attachment(std::make_shared<SceneInstance>("Camera attachment", lysa::float4x4::identity())),
-        window(window) {
+               near, far) {
 
         attachment->addChild(pivot);
 

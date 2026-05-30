@@ -4,7 +4,7 @@ import lysa;
 
 export namespace mygame {
 
-    // Window & renderer configuration ────────────────────────────────────────
+    // Window & renderer configuration
     lysa::RenderingWindowConfiguration renderingWindowConfiguration {
         .title  = "Lysa – Tutorial 1",
         .mode   = lysa::RenderingWindowMode::WINDOWED,
@@ -24,7 +24,7 @@ export namespace mygame {
         }
     };
 
-    // Main application window ─────────────────────────────────────────────────
+    // Main application window
     class MainWindow : public lysa::RenderingWindow {
     public:
         MainWindow() : RenderingWindow(renderingWindowConfiguration) {
